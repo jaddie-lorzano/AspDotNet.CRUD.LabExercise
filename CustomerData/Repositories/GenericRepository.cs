@@ -1,4 +1,5 @@
 ﻿using CustomerData.Context;
+using CustomerData.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,9 @@ namespace CustomerData.Repositories
             if (entity is object)
             {
                 this.Context.Entry<T>(entity).State = EntityState.Detached;
+                return entity;
             }
+            throw new Exception($"Entity with ID {id} was not found.");
         }
         public T Insert(T entity)
         {

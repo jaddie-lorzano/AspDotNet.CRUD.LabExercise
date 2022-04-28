@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace CustomerData.Models
 {
-    public class Customer : BaseEntity
+    public abstract class BaseEntity
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string? Address { get; set; }
-        public string? Phone { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
     }
 }

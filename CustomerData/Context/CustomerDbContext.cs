@@ -11,7 +11,11 @@ namespace CustomerData.Context
     public class CustomerDbContext : DbContext
     {
         private readonly string _connectionString;
-        public CustomerDbContext() : this("Server = DESKTOP-47CLFBT; Database = CustomerDb; User Id = sa; Password = D@gisik@n1997*")
+        public CustomerDbContext() : this(
+            "Server = DESKTOP-47CLFBT; " +
+            "Database = CustomerDb; " +
+            "User Id = sa; " +
+            "Password = D@gisik@n1997*")
         {
 
         }

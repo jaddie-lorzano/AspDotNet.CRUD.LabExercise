@@ -88,5 +88,5 @@ namespace CustomerData.Context
 
 ```
 
-### Migrate and Update Customer Database
+### Generate Customer Database
 Through the `Package Manager Console`, Enter `Add-Migration [Insert any name]` command to create `Migrations` folder. Then, use the command `Update-Database` to update the Database.

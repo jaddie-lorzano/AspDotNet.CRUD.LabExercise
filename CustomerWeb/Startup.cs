@@ -1,3 +1,5 @@
+using CustomerData.Context;
+using CustomerData.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,11 @@ namespace CustomerWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            var connectionString = Configuration.GetValue<string>("ConnectionString");
+            CustomerDbContext customerDbContext = new CustomerDbContext(connectionString);
+            ICustomerRepository customerRepository = new CustomerRepository(customerDbContext);
+            services.Add(new ServiceDescriptor(typeof(ICustomerRepository), customerRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,58 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<CustomerData.Models.Customer>
+
 @{
+    ViewBag.Title = "Customers";
+}
+
+<h2>Customers</h2>
+<p>
+    @Html.ActionLink("New Customer", "New")
+</p>
+
+@{if (Model.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                 <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                 <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+            </tr>
+
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Phone)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Id, action="edit" }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.Id,  }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    </td>
+            </tr>
+            }
+            </table>
+    }
+    else
+    {
+        <h3>Customer not Found...</h3>
+    }
 }

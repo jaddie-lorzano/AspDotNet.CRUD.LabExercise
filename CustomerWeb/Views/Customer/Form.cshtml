@@ -1,5 +1,60 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CustomerData.Models.Customer
+
 @{
+    var action = ViewData["Action"];
 }
+
+    <h3>@action Customer</h3>
+    <form asp-controller="customer" asp-action="save" method="post">
+        @Html.Hidden("action",action)
+        <table border="0" cellpadding="2" cellspacing="2">
+            @if (action != null && action.ToString().ToLower().Equals("edit"))
+            {
+                <input asp-for="Id" type="hidden" />
+            }
+            
+            <tr>
+                <td>First Name</td>
+                <td>
+                    <input asp-for="FirstName" />
+                </td>
+                <td>
+                    <span asp-validation-for="FirstName"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>
+                    <input asp-for="LastName" />
+                </td>
+                <td>
+                    <span asp-validation-for="LastName"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>
+                    <input asp-for="Address" />
+                </td>
+                <td>
+                    <span asp-validation-for="Address"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>
+                    <input asp-for="Phone" type="number"/>
+                </td>
+                <td>
+                    <span asp-validation-for="Phone"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+            </tr>
+        </table>
+    </form>
+

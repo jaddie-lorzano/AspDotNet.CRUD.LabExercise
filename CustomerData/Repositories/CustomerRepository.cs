@@ -1,4 +1,5 @@
-﻿using CustomerData.Models;
+﻿using CustomerData.Context;
+using CustomerData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,11 @@ namespace CustomerData.Repositories
     {
 
     }
-    public class CustomerRepository
+    public class CustomerRepository : GenericRepository<Customer>, ICustomerRepository
     {
+        public CustomerRepository(CustomerDbContext context) : base(context)
+        {
 
+        }
     }
 }
